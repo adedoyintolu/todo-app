@@ -13,7 +13,7 @@ import * as firebase from 'firebase';
   };
 
 
- class Firebase{
+ class Firebase {
     auth: firebase.auth.Auth;
     db: firebase.firestore.Firestore;
     constructor(){
