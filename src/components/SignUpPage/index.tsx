@@ -15,21 +15,23 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  error: null
+  error: null,
 };
 
-class SignUpForm extends Component<{}, {
-   username: string, 
-   email: string, 
-   passwordOne: string,
-   passwordTwo: string,
-   error: null,
-   [x: number]: any 
-  }> {
+class SignUpForm extends Component<
+  {},
+  {
+    username: string;
+    email: string;
+    passwordOne: string;
+    passwordTwo: string;
+    error: any;
+    [x: number]: any;
+  }
+> {
   constructor(props: any) {
     super(props);
 
-    
     this.state = { ...INITIAL_STATE };
   }
 
@@ -40,16 +42,10 @@ class SignUpForm extends Component<{}, {
   };
 
   render() {
-    const {
-      username,
-      email,
-      passwordOne,
-      passwordTwo,
-      error,
-    } = this.state;
+    const { username, email, passwordOne, passwordTwo, error } = this.state;
     return (
-    <form onSubmit={this.onSubmit}>
-      <input
+      <form onSubmit={this.onSubmit}>
+        <input
           name="username"
           value={username}
           onChange={this.onChange}
@@ -78,9 +74,9 @@ class SignUpForm extends Component<{}, {
           placeholder="Confirm Password"
         />
         <button type="submit">Sign Up</button>
- 
-        {error && <p>{error!.message}</p>}
-    </form>
+
+        {error && <p>{error.message}</p>}
+      </form>
     );
   }
 }
