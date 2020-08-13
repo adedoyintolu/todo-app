@@ -10,26 +10,29 @@ import {
 import firebase from './config/firebase';
 
 const App = () =>{
+  const [firebaseInitialized, setFirebaseInitialized] = useState(false);
 
-    const[firebaseInitialized, setFirebaseInitialized] = useState(false)
-     useEffect(() => {
-      firebase.isInitialized().then((val:any) => {
-        return setFirebaseInitialized(val);
-      });
+  useEffect(() => {
+    firebase.isInitialized().then((val:any) => {
+      return setFirebaseInitialized(val);
     });
+  });
 
-     return firebaseInitialized !==false ?(
-      <Router>
-        <Switch>
-          <Route exact path="/" >
-            <LoginPage/>
-          </Route>
-          <Route  path="/todo" >
-            <TodoPage/>
-          </Route>
-        </Switch>
-      </Router>
-    ): <div>You Need to Log In</div>
+  return firebaseInitialized !==false ? (
+    <Router>
+      <Switch>
+        <Route 
+          component={LoginPage}
+          exact 
+          path="/" 
+        />
+        <Route 
+          component={TodoPage} 
+          path="/todo" 
+        />
+      </Switch>
+    </Router>
+  ) : <div>You Need to Log In</div>
 } 
 
 export default App;

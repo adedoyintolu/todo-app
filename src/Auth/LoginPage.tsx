@@ -3,7 +3,7 @@ import firebase from '../config/firebase';
 import { withRouter } from 'react-router-dom';
 import "../App.css";
 
-const LoginPage = (props) =>{
+const LoginPage = (props: { history: { replace: (arg0: string) => void; }; }) =>{
 
    const[email, setEmail] = useState('')
    const[password, setPassword] = useState('')
