@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
-import firebase from '../config/firebase';
-import { withRouter } from 'react-router-dom';
+import firebase from '../Firebase/firebase';
 import '../App.css';
 
-const LoginPage = (props: { history: { replace: (arg0: string) => void } }) => {
+const SignInPage = (props: {
+  history: { replace: (arg0: string) => void };
+}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  async function login() {
+    try {
+      await firebase.login(email, password);
+      props.history.replace('/todo');
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   return (
     <div className="app">
@@ -29,15 +39,6 @@ const LoginPage = (props: { history: { replace: (arg0: string) => void } }) => {
       </form>
     </div>
   );
-
-  async function login() {
-    try {
-      await firebase.login(email, password);
-      props.history.replace('/todo');
-    } catch (error) {
-      alert(error.message);
-    }
-  }
 };
 
-export default withRouter(LoginPage);
+export default SignInPage;

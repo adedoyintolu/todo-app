@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-export default function Todo() {
+export default function ToDo() {
   const [newTodo, setNewTodo] = useState('');
   const [todos, setTodos] = useState([
     {
@@ -33,6 +33,7 @@ export default function Todo() {
   function removeTodo(id: number) {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
+
   return (
     <div className="app">
       <form onSubmit={handleNewTodo} className="form">
