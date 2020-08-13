@@ -58,7 +58,11 @@
       "check-whitespace"
     ],
     "prefer-const": true,
-    "prettier": true,
+    "prettier": [
+      true,
+      null,
+      { "editorconfig": false, "ignorePath": "src/serviceWorker.ts" }
+    ],
     "quotemark": [true, "single", "jsx-double"],
     "radix": true,
     "semicolon": [true, "always"],
